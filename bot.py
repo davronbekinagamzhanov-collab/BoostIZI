@@ -220,12 +220,13 @@ async def choose_quality(callback: types.CallbackQuery):
     
     kb = InlineKeyboardBuilder()
     for q_key, q_data in cat_data["items"].items():
-        price_1000 = math.ceil(q_data["rate"] * USD_TO_KZT * PROFIT_FACTOR)
-        kb.row(types.InlineKeyboardButton(text=f"{q_data['name']} — {price_1000} ₸ / 1000 шт.", callback_data=f"q_{p_key}_{c_key}_{q_key}"))
+        # Оставляем только название пакета (гарантию/качество), без цены
+        kb.row(types.InlineKeyboardButton(text=q_data['name'], callback_data=f"q_{p_key}_{c_key}_{q_key}"))
         
     kb.row(types.InlineKeyboardButton(text="⬅️ Назад", callback_data=f"p_{p_key}"))
-    await callback.message.edit_text("⚙️ **Выберите подходящий пакет (качество):**\n\n*(Цены указаны за 1000 штук для удобства сравнения)*", reply_markup=kb.as_markup(), parse_mode="Markdown")
-
+    
+    # Убрали текст про цены в самом сообщении
+    await callback.message.edit_text("⚙️ **Выберите подходящий пакет (качество):**", reply_markup=kb.as_markup(), parse_mode="Markdown")
 @dp.callback_query(F.data.startswith("q_"))
 async def choose_volume(callback: types.CallbackQuery, state: FSMContext):
     _, p_key, c_key, q_key = callback.data.split("_")
@@ -397,3 +398,4 @@ async def main():
 
 if __name__ == "__main__":
     asyncio.run(main())
+
