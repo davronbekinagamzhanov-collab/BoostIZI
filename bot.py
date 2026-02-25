@@ -9,11 +9,11 @@ from aiogram.fsm.context import FSMContext
 from aiogram.fsm.state import State, StatesGroup
 
 # ==========================================
-# 1. НАСТРОЙКИ СИСТЕМЫ И БИЗНЕСА
+# 1. НАСТРОЙКИ СИСТЕМЫ И БИЗНЕСА (PEAKERR API)
 # ==========================================
 TOKEN = "8490009050:AAHJTzpsgpeNvyJdbepBd8QrC4K67kX_bS8"
-JAP_API_KEY = "619aa1adbd1108aaaa2efb7bae7d632a"
-JAP_URL = "https://justanotherpanel.com/api/v2"
+PEAKERR_API_KEY = "1bb6159c63783fb2a77f693b6844428d"
+PEAKERR_URL = "https://peakerr.com/api/v2"
 
 ADMIN_ID = 6305773261
 KASPI_NUMBER = "+7 706 707 64 34 (Давронбек И.)"
@@ -36,11 +36,11 @@ class OrderProcess(StatesGroup):
 # ==========================================
 LANG_DICT = {
     "ru": {
-        "welcome": "👋 **Добро пожаловать, {name}!**\n\nВы находитесь в сервисе умного и безопасного продвижения в социальных сетях 🚀\n\n✨ **Что мы умеем?**\nМы помогаем вашим аккаунтам расти. В нашем арсенале только проверенные мировые серверы, обеспечивающие высокую скорость и надежность.\n\n🛡 **Безопасность:** Нам не нужны ваши пароли — только ссылка на профиль или пост.\n💎 **Качество:** Вы сами выбираете тариф — от экономного старта до премиум-накрутки с гарантией от списаний до 365 дней.\n\n👇 Выберите действие ниже, чтобы начать:",
+        "welcome": "👋 **Добро пожаловать, {name}!**\n\nВы находитесь в сервисе умного и безопасного продвижения в социальных сетях 🚀\n\n✨ **Что мы умеем?**\nМы помогаем вашим аккаунтам расти. В нашем арсенале только проверенные мировые серверы, обеспечивающие высокую скорость и надежность.\n\n🛡 **Безопасность:** Нам не нужны ваши пароли — только ссылка на профиль или пост.\n💎 **Качество:** Вы сами выбираете тариф — от экономного старта до премиум-накрутки с пожизненной гарантией (Lifetime).\n\n👇 Выберите действие ниже, чтобы начать:",
         "btn_start": "🚀 Начать продвижение",
         "btn_about": "ℹ️ О нас / Как это работает",
         "btn_lang": "🌍 Выбрать язык",
-        "about_text": "ℹ️ **О нашем сервисе**\n\n🛠 **Как сделать заказ?**\n1. Нажмите «Начать продвижение» и выберите соцсеть.\n2. Выберите нужную услугу и уровень качества.\n3. Укажите объем и отправьте ссылку на ваш аккаунт/пост.\n4. Оплатите заказ переводом на Kaspi и отправьте боту скриншот чека.\n5. После проверки администратором заказ запустится автоматически! 🚀\n\n💡 **Что такое гарантия?**\nЕсли вы выбрали услугу с гарантией (например, 30 или 365 дней), то в случае отписок система автоматически восполнит потери абсолютно бесплатно.\n\n📞 **Поддержка:** Если возникли вопросы, свяжитесь с нами @davronbk7.",
+        "about_text": "ℹ️ **О нашем сервисе**\n\n🛠 **Как сделать заказ?**\n1. Нажмите «Начать продвижение» и выберите соцсеть.\n2. Выберите нужную услугу и уровень качества.\n3. Укажите объем и отправьте ссылку на ваш аккаунт/пост.\n4. Оплатите заказ переводом на Kaspi и отправьте боту скриншот чека.\n5. После проверки администратором заказ запустится автоматически! 🚀\n\n💡 **Что такое гарантия?**\nЕсли вы выбрали услугу с гарантией (например, Lifetime или 365 дней), то в случае отписок система восстановит потери абсолютно бесплатно.\n\n📞 **Поддержка:** Если возникли вопросы, свяжитесь с нами @davronbk7.",
         "btn_back": "⬅️ Назад",
         "choose_plat": "📱 **Выберите социальную сеть для продвижения:**",
         "choose_cat": "🎯 **Что именно будем накручивать?**",
@@ -83,7 +83,7 @@ LANG_DICT = {
 }
 
 # ==========================================
-# 2. ГЛОБАЛЬНАЯ БАЗА УСЛУГ (ИЗ ФАЙЛА)
+# 2. ГЛОБАЛЬНАЯ БАЗА УСЛУГ (PEAKERR PREMIUM API)
 # ==========================================
 SERVICES = {
     "inst": {
@@ -92,44 +92,44 @@ SERVICES = {
             "subs": {
                 "name": "👥 Подписчики",
                 "items": {
-                    "eco": {"id": "10146", "name": "🌱 Эконом (Без гарантии)", "rate": 0.375, "start": "0-1 час", "speed": "До 200k/день", "retention": "Возможны списания"},
-                    "r30": {"id": "10131", "name": "🛡 Стандарт (Гарантия 30 дней)", "rate": 0.5278, "start": "0-2 часа", "speed": "До 20k/день", "retention": "Среднее (Месяц защиты)"},
-                    "r365": {"id": "10143", "name": "💎 Вечные (Гарантия 365 дней)", "rate": 0.95, "start": "0-2 часа", "speed": "До 500k/день", "retention": "Высокое (Защита на год)"},
-                    "unlim": {"id": "10085", "name": "👑 БЕЗЛИМИТ ВОССТАНОВЛЕНИЕ", "rate": 7.375, "start": "Мгновенно", "speed": "До 200k/день", "retention": "НАВСЕГДА (Бесконечная гарантия)"},
-                    "prem": {"id": "5951", "name": "🔥 Premium Quality (Non Drop)", "rate": 5.235, "start": "0-24 часа", "speed": "До 5k/день", "retention": "Вечные (Без списаний)"}
+                    "eco": {"id": "29641", "name": "🌱 Эконом (Старые аккаунты)", "rate": 0.54, "start": "Мгновенно", "speed": "До 200k/день", "retention": "Возможны списания"},
+                    "r30": {"id": "29642", "name": "🛡 Стандарт (Гарантия 30 дней)", "rate": 0.67, "start": "Мгновенно", "speed": "До 200k/день", "retention": "Месяц защиты"},
+                    "r365": {"id": "28039", "name": "💎 Вечные (Гарантия 365 дней)", "rate": 1.06, "start": "Мгновенно", "speed": "До 100k/день", "retention": "Защита на год"},
+                    "unlim": {"id": "29483", "name": "👑 БЕЗЛИМИТ ВОССТАНОВЛЕНИЕ", "rate": 0.81, "start": "Мгновенно", "speed": "До 500k/день", "retention": "НАВСЕГДА (Lifetime)"},
+                    "prem": {"id": "29524", "name": "🔥 Premium (Аватарки + Посты + Lifetime)", "rate": 0.90, "start": "Мгновенно", "speed": "До 200k/день", "retention": "Пожизненная гарантия"}
                 }
             },
             "likes": {
                 "name": "❤️ Лайки",
                 "items": {
-                    "eco": {"id": "5626", "name": "🌱 Эконом", "rate": 0.1375, "start": "0-1 час", "speed": "До 100k/день", "retention": "Могут списаться"},
-                    "r365": {"id": "10066", "name": "💎 Вечные (Гарантия 365 дней)", "rate": 0.286, "start": "0-1 час", "speed": "До 20k/день", "retention": "Держатся стабильно"},
-                    "power": {"id": "3476", "name": "🚀 POWER Likes (Высочайшее качество)", "rate": 0.7875, "start": "1 час", "speed": "До 5k/день", "retention": "Максимальное удержание"}
+                    "eco": {"id": "29653", "name": "🌱 Эконом (Без гарантии)", "rate": 0.12, "start": "Мгновенно", "speed": "До 100k/день", "retention": "Могут списаться"},
+                    "r30": {"id": "27958", "name": "🛡 Стандарт (Старые аккаунты, 30 дней)", "rate": 0.14, "start": "Мгновенно", "speed": "До 100k/день", "retention": "30 дней"},
+                    "r365": {"id": "29629", "name": "💎 Вечные (HQ Аккаунты, 365 дней)", "rate": 0.16, "start": "Мгновенно", "speed": "До 200k/день", "retention": "1 Год защиты"},
+                    "power": {"id": "29442", "name": "🚀 POWER Likes (100% Живые с фото)", "rate": 0.09, "start": "Мгновенно", "speed": "До 20k/день", "retention": "Пожизненно (Lifetime)"}
                 }
             },
             "views": {
                 "name": "👀 Просмотры (Views)",
                 "items": {
-                    "video": {"id": "798", "name": "🔥 Видео / Reels", "rate": 0.0063, "start": "Мгновенно", "speed": "До 1 млн/день", "retention": "Пожизненно"},
-                    "story": {"id": "312", "name": "📱 Истории (Story)", "rate": 0.0032, "start": "0-1 час", "speed": "До 100k/день", "retention": "На время истории"}
+                    "video": {"id": "29004", "name": "🔥 Видео / Reels (Супер быстрые)", "rate": 0.025, "start": "Мгновенно", "speed": "Молниеносно", "retention": "Пожизненно"},
+                    "cheap": {"id": "27050", "name": "📉 Просмотры (Эконом)", "rate": 0.002, "start": "Мгновенно", "speed": "До 100M/день", "retention": "Без списаний"},
+                    "reach": {"id": "25019", "name": "📈 Просмотры + Охват + Посещения", "rate": 0.12, "start": "Мгновенно", "speed": "До 500K/час", "retention": "Пожизненно"}
                 }
             },
             "comments": {
                 "name": "💬 Комментарии",
                 "items": {
-                    "rand": {"id": "112", "name": "💬 Случайные (Микс)", "rate": 4.375, "start": "0-3 часа", "speed": "До 25k/день", "retention": "30 дней защиты"},
-                    "emoji": {"id": "5867", "name": "😍 Эмодзи (HQ Качество)", "rate": 3.125, "start": "0-6 часов", "speed": "До 1k/день", "retention": "Пожизненно (LIFETIME)"},
-                    "custom": {"id": "3382", "name": "✍️ Свои тексты (Custom)", "rate": 11.25, "start": "1 час", "speed": "До 300/день", "retention": "Без списаний (NON-DROP)"},
-                    "power": {"id": "5980", "name": "🔥 Power Comments (от 10k+ аккаунтов)", "rate": 4.80, "start": "0-1 час", "speed": "Быстро", "retention": "Супер-качество"}
+                    "rand": {"id": "29487", "name": "💬 Случайные от 100% живых (30 дней)", "rate": 0.68, "start": "0-3 часа", "speed": "До 100k/день", "retention": "30 дней защиты"},
+                    "custom": {"id": "29491", "name": "✍️ Свои тексты (Custom 30 дней)", "rate": 0.93, "start": "0-7 часов", "speed": "До 100k/день", "retention": "30 дней защиты"},
+                    "power": {"id": "26743", "name": "🔥 VIP Комментарии (Кастомные HQ)", "rate": 3.75, "start": "Мгновенно", "speed": "До 1K/день", "retention": "Супер-качество"}
                 }
             },
             "stats": {
-                "name": "📈 Статистика (Репосты/Охват)",
+                "name": "📈 Статистика (Репосты/Сохранения)",
                 "items": {
-                    "reach": {"id": "1068", "name": "📊 Охват + Показы", "rate": 0.8125, "start": "0-1 час", "speed": "До 100k/день", "retention": "Не списываются"},
-                    "saves": {"id": "448", "name": "📌 Сохранения", "rate": 0.20, "start": "0-1 час", "speed": "До 15k/день", "retention": "Не списываются"},
-                    "shares": {"id": "584", "name": "🚀 Репосты (Shares)", "rate": 0.1775, "start": "0-1 час", "speed": "До 20k/день", "retention": "Не списываются"},
-                    "profile": {"id": "8220", "name": "👤 Визиты профиля + Охват", "rate": 0.075, "start": "0-1 час", "speed": "До 50k/день", "retention": "Не списываются"}
+                    "saves": {"id": "26988", "name": "📌 Сохранения (Живые)", "rate": 0.06, "start": "0-10 минут", "speed": "До 2k/день", "retention": "Не списываются"},
+                    "shares": {"id": "29247", "name": "🚀 Репосты (Shares)", "rate": 0.26, "start": "Мгновенно", "speed": "Быстро", "retention": "Не списываются"},
+                    "profile": {"id": "29200", "name": "👤 Охват + Показы", "rate": 0.07, "start": "Мгновенно", "speed": "Быстро", "retention": "Не списываются"}
                 }
             }
         }
@@ -140,60 +140,34 @@ SERVICES = {
             "subs": {
                 "name": "👥 Подписчики",
                 "items": {
-                    "std": {"id": "6678", "name": "🌱 Базовые", "rate": 1.20, "start": "0-1 час", "speed": "До 10k/день", "retention": "Среднее удержание"},
-                    "unlim": {"id": "8960", "name": "💎 БЕЗЛИМИТ ВОССТАНОВЛЕНИЕ", "rate": 4.50, "start": "0-2 часа", "speed": "До 5k/день", "retention": "НАВСЕГДА (Защита от списаний)"}
-                }
-            },
-            "views": {
-                "name": "👀 Просмотры",
-                "items": {
-                    "fast": {"id": "2211", "name": "🚀 Мгновенные", "rate": 0.002, "start": "Мгновенно", "speed": "Молниеносно", "retention": "Не списываются"}
-                }
-            }
-        }
-    },
-    "yt": {
-        "name": "▶️ YouTube",
-        "cats": {
-            "views": {
-                "name": "👀 Просмотры (Views)",
-                "items": {
-                    "std": {"id": "7709", "name": "🌱 Стандартные просмотры", "rate": 1.50, "start": "0-6 часов", "speed": "До 10k/день", "retention": "Нормальное"},
-                    "unlim": {"id": "8466", "name": "💎 LIFETIME (Вечные просмотры)", "rate": 1.175, "start": "0-4 часа", "speed": "До 5M/день", "retention": "Пожизненно (LIFETIME)"},
-                    "rav": {"id": "3912", "name": "🔥 Уникальные RAV™ + Вовлеченность", "rate": 3.125, "start": "0-1 час", "speed": "До 2k/день", "retention": "90 дней (Высокое удержание)"},
-                    "retention": {"id": "9254", "name": "⏱ Удержание 1-5 минут (External)", "rate": 1.75, "start": "0-2 часа", "speed": "До 2k/день", "retention": "Пожизненно"}
+                    "eco": {"id": "29820", "name": "🌱 Эконом (LQ аккаунты)", "rate": 0.51, "start": "Мгновенно", "speed": "До 200k/день", "retention": "Среднее удержание"},
+                    "std": {"id": "29969", "name": "🛡 Стандарт (Живые, 30 дней)", "rate": 1.75, "start": "Мгновенно", "speed": "До 200k/день", "retention": "Защита 30 дней"},
+                    "unlim": {"id": "28185", "name": "💎 БЕЗЛИМИТ ВОССТАНОВЛЕНИЕ (Real)", "rate": 0.92, "start": "Мгновенно", "speed": "До 200k/день", "retention": "НАВСЕГДА (Auto Refill)"}
                 }
             },
             "likes": {
                 "name": "❤️ Лайки",
                 "items": {
-                    "std": {"id": "7002", "name": "👍 Лайки на видео", "rate": 2.50, "start": "0-1 час", "speed": "Естественная", "retention": "Долгосрочные"}
-                }
-            }
-        }
-    },
-    "fb": {
-        "name": "📘 Facebook",
-        "cats": {
-            "subs": {
-                "name": "👥 Подписчики и Лайки (Pages)",
-                "items": {
-                    "std": {"id": "6297", "name": "🌱 Лайки Страницы (Гарантия 30 дней)", "rate": 1.375, "start": "0-1 час", "speed": "До 5k/день", "retention": "30 дней"},
-                    "prem": {"id": "1722", "name": "💎 Лайки Страницы (Вечные)", "rate": 1.025, "start": "0-8 часов", "speed": "До 500k/день", "retention": "Пожизненно (LIFETIME)"}
-                }
-            },
-            "post_likes": {
-                "name": "❤️ Лайки на посты",
-                "items": {
-                    "std": {"id": "4351", "name": "👍 Лайки (Гарантия 30 дней)", "rate": 0.475, "start": "0-1 час", "speed": "До 1k/день", "retention": "30 дней"},
-                    "emoji": {"id": "225", "name": "❤️ Реакция LOVE (Эмодзи)", "rate": 1.00, "start": "1 час", "speed": "До 50k/день", "retention": "30 дней"}
+                    "eco": {"id": "28171", "name": "🌱 Эконом (Боты, Lifetime)", "rate": 0.02, "start": "Мгновенно", "speed": "До 200k/день", "retention": "Пожизненно"},
+                    "prem": {"id": "26305", "name": "💎 Премиум (Живые HQ, Lifetime)", "rate": 0.07, "start": "Мгновенно", "speed": "До 200k/день", "retention": "Пожизненно"},
+                    "power": {"id": "28160", "name": "🚀 POWER Лайки (С постами, Drop 0%)", "rate": 0.14, "start": "Мгновенно", "speed": "До 200k/день", "retention": "Пожизненно"}
                 }
             },
             "views": {
-                "name": "👀 Просмотры (Видео/Reels)",
+                "name": "👀 Просмотры / Репосты",
                 "items": {
-                    "reels": {"id": "357", "name": "📱 Facebook Reels Views", "rate": 0.0875, "start": "0-1 час", "speed": "До 200k/день", "retention": "Высокое"},
-                    "video": {"id": "428", "name": "🔥 Просмотры Видео (3 Seconds)", "rate": 0.65, "start": "0-1 час", "speed": "До 500k/день", "retention": "Высокое"}
+                    "fast": {"id": "29549", "name": "🚀 Мгновенные просмотры", "rate": 0.006, "start": "Мгновенно", "speed": "Молниеносно", "retention": "Не списываются"},
+                    "unlim": {"id": "25997", "name": "💎 Вечные просмотры (Lifetime)", "rate": 0.016, "start": "Мгновенно", "speed": "До 5M/день", "retention": "Пожизненно"},
+                    "saves": {"id": "28136", "name": "📌 Сохранения (Lifetime)", "rate": 0.007, "start": "Мгновенно", "speed": "До 100K/день", "retention": "Пожизненно"},
+                    "share": {"id": "29453", "name": "🚀 Репосты (Lifetime)", "rate": 0.016, "start": "Мгновенно", "speed": "До 500K/день", "retention": "Пожизненно"}
+                }
+            },
+            "live": {
+                "name": "🔴 Прямые трансляции (Live)",
+                "items": {
+                    "min15": {"id": "27534", "name": "👁 Зрители на 15 минут", "rate": 0.68, "start": "Мгновенно", "speed": "Сразу", "retention": "15 минут"},
+                    "min60": {"id": "27536", "name": "👁 Зрители на 60 минут", "rate": 2.75, "start": "Мгновенно", "speed": "Сразу", "retention": "60 минут"},
+                    "comments": {"id": "27965", "name": "💬 Свои комментарии в эфир", "rate": 0.56, "start": "Мгновенно", "speed": "Быстро", "retention": "Во время Live"}
                 }
             }
         }
@@ -204,8 +178,121 @@ SERVICES = {
             "subs": {
                 "name": "👥 Подписчики",
                 "items": {
-                    "std": {"id": "9378", "name": "🌱 Стандарт", "rate": 0.68, "start": "0-1 час", "speed": "До 500k/день", "retention": "Среднее удержание"},
-                    "prem": {"id": "9382", "name": "💎 Премиум", "rate": 1.50, "start": "0-1 час", "speed": "До 50k/день", "retention": "Долгосрочные"}
+                    "std": {"id": "28864", "name": "🌱 Стандарт (Гарантия 90 дней)", "rate": 0.98, "start": "Мгновенно", "speed": "До 100k/день", "retention": "90 дней защиты"},
+                    "prem": {"id": "29546", "name": "💎 100% Живые (Lifetime Non Drop)", "rate": 0.63, "start": "Мгновенно", "speed": "До 100k/день", "retention": "Пожизненная защита"},
+                    "vip": {"id": "28457", "name": "🚀 Premium Подписчики + Просмотры", "rate": 3.60, "start": "Мгновенно", "speed": "Быстро", "retention": "7 Дней Non Drop"}
+                }
+            },
+            "views": {
+                "name": "👀 Просмотры постов",
+                "items": {
+                    "post1": {"id": "15972", "name": "👁 Просмотры на 1 пост (Non Drop)", "rate": 0.015, "start": "Мгновенно", "speed": "Молниеносно", "retention": "Не списываются"},
+                    "post5": {"id": "28479", "name": "💎 Premium просмотры на 5 постов", "rate": 0.50, "start": "Мгновенно", "speed": "Быстро", "retention": "Не списываются"}
+                }
+            },
+            "reacts": {
+                "name": "🔥 Реакции",
+                "items": {
+                    "pos": {"id": "28576", "name": "👍 Позитивные Реакции + Просмотры", "rate": 0.02, "start": "Мгновенно", "speed": "Быстро", "retention": "Не списываются"},
+                    "like": {"id": "23335", "name": "👍 Только лайки (Lifetime)", "rate": 0.03, "start": "Мгновенно", "speed": "Быстро", "retention": "Пожизненно"}
+                }
+            }
+        }
+    },
+    "yt": {
+        "name": "▶️ YouTube",
+        "cats": {
+            "subs": {
+                "name": "👥 Подписчики",
+                "items": {
+                    "vip": {"id": "27929", "name": "💎 Подписчики (100/день, Lifetime VIP)", "rate": 33.62, "start": "В течение дня", "speed": "Естественная", "retention": "Пожизненно (Auto Refill)"}
+                }
+            },
+            "views": {
+                "name": "👀 Просмотры (Views)",
+                "items": {
+                    "native": {"id": "28692", "name": "🌱 Реальные нативные просмотры (Non Drop)", "rate": 0.93, "start": "0-4 часа", "speed": "До 200k/день", "retention": "Пожизненно"},
+                    "vip": {"id": "27906", "name": "💎 VIP Просмотры (Lifetime)", "rate": 1.28, "start": "0-4 часа", "speed": "До 2k/день", "retention": "Пожизненно"},
+                    "retention": {"id": "27909", "name": "⏱ Удержание 1 Минута (Exclusive)", "rate": 3.43, "start": "0-4 часа", "speed": "До 2k/день", "retention": "Пожизненно"}
+                }
+            },
+            "likes": {
+                "name": "❤️ Лайки / Комменты",
+                "items": {
+                    "like": {"id": "27930", "name": "👍 Лайки (Non Drop Lifetime)", "rate": 0.52, "start": "0-1 час", "speed": "Быстро", "retention": "Пожизненно"},
+                    "comment": {"id": "28756", "name": "💬 Свои комментарии (100% Non Drop)", "rate": 3.00, "start": "1 час", "speed": "Быстро", "retention": "Пожизненно"}
+                }
+            },
+            "live": {
+                "name": "🔴 Прямые трансляции (Live)",
+                "items": {
+                    "min15": {"id": "27517", "name": "👁 Зрители на 15 минут", "rate": 0.31, "start": "Мгновенно", "speed": "Сразу", "retention": "15 минут"},
+                    "min60": {"id": "27519", "name": "👁 Зрители на 60 минут", "rate": 1.25, "start": "Мгновенно", "speed": "Сразу", "retention": "60 минут"}
+                }
+            }
+        }
+    },
+    "fb": {
+        "name": "📘 Facebook",
+        "cats": {
+            "subs": {
+                "name": "👥 Подписчики и Страницы",
+                "items": {
+                    "page": {"id": "29815", "name": "🌱 Лайки Страницы + Подписчики", "rate": 0.37, "start": "Мгновенно", "speed": "До 100k/день", "retention": "Пожизненно (Lifetime)"},
+                    "prof": {"id": "29444", "name": "💎 Подписчики Профиля (Гарантия 30 дней)", "rate": 0.10, "start": "Мгновенно", "speed": "До 300k/день", "retention": "30 дней"}
+                }
+            },
+            "likes": {
+                "name": "❤️ Лайки / Реакции",
+                "items": {
+                    "std": {"id": "29582", "name": "👍 Лайки на пост (Lifetime)", "rate": 0.17, "start": "Мгновенно", "speed": "До 100k/день", "retention": "Пожизненно"},
+                    "love": {"id": "29631", "name": "❤️ Реакция LOVE (Без списаний)", "rate": 0.09, "start": "Мгновенно", "speed": "До 10k/день", "retention": "Держатся стабильно"}
+                }
+            },
+            "views": {
+                "name": "👀 Просмотры (Видео/Live)",
+                "items": {
+                    "video": {"id": "29449", "name": "📱 Просмотры Reels / Видео (Lifetime)", "rate": 0.02, "start": "Мгновенно", "speed": "До 30k/день", "retention": "Пожизненно"},
+                    "live": {"id": "29051", "name": "🔴 Зрители в Прямой Эфир (60 мин)", "rate": 4.56, "start": "Мгновенно", "speed": "Сразу", "retention": "60 минут"}
+                }
+            }
+        }
+    },
+    "tw": {
+        "name": "🐦 Twitter (X)",
+        "cats": {
+            "subs": {
+                "name": "👥 Подписчики",
+                "items": {
+                    "std": {"id": "15030", "name": "🌱 Подписчики USA (Стабильные)", "rate": 3.68, "start": "0-30 минут", "speed": "Быстро", "retention": "Долгосрочные"}
+                }
+            },
+            "views": {
+                "name": "👀 Просмотры постов",
+                "items": {
+                    "std": {"id": "29865", "name": "📱 Просмотры Tweet/Видео (Lifetime)", "rate": 0.005, "start": "Мгновенно", "speed": "До 2M/день", "retention": "Пожизненно (Lifetime)"}
+                }
+            }
+        }
+    },
+    "spot": {
+        "name": "🎧 Spotify",
+        "cats": {
+            "views": {
+                "name": "🎵 Прослушивания",
+                "items": {
+                    "std": {"id": "28251", "name": "🔥 Premium Прослушивания", "rate": 0.91, "start": "Мгновенно", "speed": "До 1k/день", "retention": "Не списываются"}
+                }
+            }
+        }
+    },
+    "twitch": {
+        "name": "👾 Twitch",
+        "cats": {
+            "live": {
+                "name": "🔴 Зрители на трансляцию",
+                "items": {
+                    "min60": {"id": "21850", "name": "👁 Зрители на 60 минут", "rate": 2.20, "start": "Мгновенно", "speed": "Сразу", "retention": "60 минут"}
                 }
             }
         }
@@ -226,7 +313,6 @@ async def cmd_start(message: types.Message, state: FSMContext):
     
     await message.answer("🌍 Выберите язык / Тілді таңдаңыз / Тилни танланг:", reply_markup=kb.as_markup())
 
-# Кнопка НАЗАД (Вернуться к выбору языка)
 @dp.callback_query(F.data == "change_lang")
 async def change_lang(callback: types.CallbackQuery, state: FSMContext):
     await cmd_start(callback.message, state)
@@ -242,7 +328,6 @@ async def set_lang(callback: types.CallbackQuery, state: FSMContext):
     kb.row(types.InlineKeyboardButton(text=t["btn_about"], callback_data="about"))
     kb.row(types.InlineKeyboardButton(text=t["btn_lang"], callback_data="change_lang"))
     
-    # Подставляем имя пользователя в текст
     welcome_text = t['welcome'].format(name=callback.from_user.first_name)
     await callback.message.edit_text(welcome_text, reply_markup=kb.as_markup())
 
@@ -387,7 +472,7 @@ async def process_receipt(message: types.Message, state: FSMContext):
     callback_payload = f"{data['api_id']}_{data['vol']}_{user.id}"
     
     admin_text = (
-        f"⚠️ АВТОРИЗАЦИЯ ЗАКАЗА\n"
+        f"⚠️ АВТОРИЗАЦИЯ ЗАКАЗА (Платформа Peakerr)\n"
         f"От: @{user.username} (ID: {user.id})\n"
         f"Услуга: {data['s_name']} (API: {data['api_id']})\n"
         f"Кол-во: {data['vol']}\n"
@@ -406,7 +491,7 @@ async def process_receipt(message: types.Message, state: FSMContext):
     await state.clear()
 
 # ==========================================
-# 5. АДМИН ПАНЕЛЬ
+# 5. АДМИН ПАНЕЛЬ (ПОДКЛЮЧЕНО К PEAKERR)
 # ==========================================
 
 @dp.callback_query(F.data.startswith("ok_"))
@@ -421,14 +506,14 @@ async def admin_approve(callback: types.CallbackQuery):
             if "🔗 Ссылка:" in line:
                 link = lines[i+1].strip() if i+1 < len(lines) else line.replace("🔗 Ссылка:", "").strip()
         
-        api_data = {'key': JAP_API_KEY, 'action': 'add', 'service': api_id, 'link': link, 'quantity': vol}
-        response = requests.post(JAP_URL, data=api_data).json()
+        api_data = {'key': PEAKERR_API_KEY, 'action': 'add', 'service': api_id, 'link': link, 'quantity': vol}
+        response = requests.post(PEAKERR_URL, data=api_data).json()
         
         if "order" in response:
             await callback.message.edit_caption(caption=f"{callback.message.caption}\n\n🟢 [УСПЕХ. ЗАКАЗ ID: {response['order']}]")
             await bot.send_message(int(user_id), f"🎉 Оплата подтверждена! Заказ запущен (ID: {response['order']}).")
         else:
-            await callback.message.answer(f"Ошибка JAP: {response.get('error', 'Unknown')}", show_alert=True)
+            await callback.message.answer(f"Ошибка Peakerr: {response.get('error', 'Unknown')}", show_alert=True)
     except Exception as e:
         await callback.message.answer(f"Сбой: {e}", show_alert=True)
 
@@ -439,7 +524,7 @@ async def admin_reject(callback: types.CallbackQuery):
     await bot.send_message(int(user_id), "❌ Чек отклонен. Обратитесь в поддержку.")
 
 async def main():
-    logging.info("Система работает.")
+    logging.info("Система работает на Peakerr API.")
     await dp.start_polling(bot)
 
 if __name__ == "__main__":
