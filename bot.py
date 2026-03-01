@@ -32,7 +32,7 @@ class OrderProcess(StatesGroup):
     waiting_for_receipt = State()
 
 # ==========================================
-# СЛОВАРИ ПЕРЕВОДОВ 
+# СЛОВАРИ ПЕРЕВОДОВ (С ЖЕСТКИМИ ПРЕДУПРЕЖДЕНИЯМИ)
 # ==========================================
 LANG_DICT = {
     "ru": {
@@ -47,8 +47,17 @@ LANG_DICT = {
         "choose_pack": "⚙️ **Выберите подходящий пакет (качество):**",
         "pack_info": "📦 Выбранный пакет: **{name}**\n\nℹ️ **ОПИСАНИЕ И ГАРАНТИЯ:**\n_{desc}_\n\n⏱ **Время старта:** {start}\n🚀 **Скорость накрутки:** {speed}\n🛡 **Срок / Удержание:** {retention}\n\n🔢 **Укажите желаемый объем:**",
         "btn_cancel": "⬅️ Отмена",
-        "link_req": "✅ Отлично!\n\n⚠ ВАЖНО: ВАШ АККАУНТ ДОЛЖЕН БЫТЬ ОТКРЫТЫМ\n\nВаш заказ: **{name}**\nОбъем: **{vol} шт.**\nСумма к оплате: **{total} ₸**\n\n🔗 **Отправьте ссылку** (на нужный профиль или публикацию) ответным сообщением:",
-        "pay_req": "💳 **ДЕТАЛИ ОПЛАТЫ**\n\nК переводу: **{total} ₸**\n🏦 Kaspi Bank: `{kaspi}`\n\n📸 **Пожалуйста, отправьте скриншот или PDF-чек об оплате в этот чат.**\n\n*(Без чека заказ не будет передан в обработку)*"
+        "link_req": "✅ Отлично! Ваш заказ сформирован.\n\n🚨 **ВНИМАНИЕ! СТРОГИЕ ПРАВИЛА:**\n1. Ваш профиль должен быть **ОТКРЫТЫМ** до полного завершения накрутки.\n2. Ссылка должна быть **на 100% правильной** (скопируйте её из приложения).\n📌 *Если вы скинете неверную ссылку, текст вместо ссылки или ваш профиль будет закрыт — система всё равно спишет деньги, накрутка не придет, и средства ВОЗВРАТУ НЕ ПОДЛЕЖАТ. Это ваша зона ответственности.*\n\nВаш заказ: **{name}**\nОбъем: **{vol} шт.**\nСумма к оплате: **{total} ₸**\n\n🔗 **Если всё понятно и вы согласны, отправьте правильную ссылку ответным сообщением:**",
+        "pay_req": "💳 **ДЕТАЛИ ОПЛАТЫ**\n\nК переводу: **{total} ₸**\n🏦 Kaspi Bank: `{kaspi}`\n\n🚨 **ВНИМАНИЕ! СТРОГОЕ ПРАВИЛО:**\nПереводите **ТОЧНУЮ СУММУ**, указанную выше. Если вы переведете меньше или больше (даже на 1 тенге), система автоматически отклонит заказ. **В этом случае деньги ВОЗВРАТУ НЕ ПОДЛЕЖАТ!** Будьте внимательны.\n\n📸 **Отправьте скриншот или PDF-чек об оплате в этот чат.**",
+        "wait_msg": "⏳ Чек отправлен! Администратор проверяет оплату.\n📞 Техподдержка: @davronbk7",
+        "success_msg": "🎉 Оплата подтверждена! Заказ успешно запущен в работу (ID: {order_id}).\n📞 Связь с поддержкой: @davronbk7",
+        "reject_msg": "❌ **К сожалению, ваш заказ не принят.**\n\nПричина: {reason}\n📞 Напишите в поддержку для решения проблемы: @davronbk7",
+        "need_photo": "⚠️ Пожалуйста, отправьте именно ФОТО или PDF документ с чеком, а не текст.",
+        "reasons": {
+            "1": "Оплата не поступила на счет.",
+            "2": "Неверная сумма перевода.",
+            "3": "Загруженный файл не является действительным банковским чеком."
+        }
     },
     "kk": {
         "welcome": "👋 **Қош келдіңіз, {name}!**\n\nСіз әлеуметтік желілердегі ақылды және қауіпсіз ілгерілету қызметіндесіз 🚀\n\n✨ **Біз не істей аламыз?**\nБіз сіздің аккаунттарыңыздың өсуіне көмектесеміз. Біздің арсеналда тек жоғары жылдамдық пен сенімділікті қамтамасыз ететін тексерілген әлемдік серверлер бар.\n\n🛡 **Қауіпсіздік:** Бізге сіздің құпия сөздеріңіз қажет емес — тек профильге немесе постқа сілтеме жеткілікті.\n💎 **Сапа:** Тарифті өзіңіз таңдайсыз — эконом-старттан бастап 365 күнге дейін жазылушылардың кемуінен кепілдігі бар премиум-накруткаға дейін.\n\n👇 Бастау үшін төмендегі әрекетті таңдаңыз:",
@@ -62,8 +71,17 @@ LANG_DICT = {
         "choose_pack": "⚙️ **Сәйкес пакетті (сапаны) таңдаңыз:**",
         "pack_info": "📦 Таңдалған пакет: **{name}**\n\nℹ️ **СИПАТТАМА ЖӘНЕ КЕПІЛДІК:**\n_{desc}_\n\n⏱ **Басталуы:** {start}\n🚀 **Жылдамдық:** {speed}\n🛡 **Мерзімі:** {retention}\n\n🔢 **Қажетті көлемді көрсетіңіз:**",
         "btn_cancel": "⬅️ Болдырмау",
-        "link_req": "✅ Керемет!\n\n⚠ НАЗАР АУДАРЫҢЫЗ: АККАУНТЫҢЫЗ АШЫҚ БОЛУЫ ТИІС\n\nСіздің тапсырысыңыз: **{name}**\nКөлемі: **{vol} шт.**\nТөлем сомасы: **{total} ₸**\n\n🔗 **Сілтемені жіберіңіз** (профильге немесе постқа):",
-        "pay_req": "💳 **ТӨЛЕМ ДЕТАЛЬДАРЫ**\n\nАударым сомасы: **{total} ₸**\n🏦 Kaspi Bank: `{kaspi}`\n\n📸 **Төлем чегін (скриншот немесе PDF) осы чатқа жіберіңіз.**\n\n*(Чексіз тапсырыс өңделмейді)*"
+        "link_req": "✅ Керемет! Тапсырыс жасалды.\n\n🚨 **НАЗАР АУДАРЫҢЫЗ! ҚАТАҢ ЕРЕЖЕЛЕР:**\n1. Профиліңіз **АШЫҚ** болуы тиіс.\n2. Сілтеме **100% дұрыс** болуы керек (қосымшадан көшіріп алыңыз).\n📌 *Егер профиль жабық болса немесе сілтеме қате болса — жүйе ақшаны ұстап қалады, қызмет орындалмайды және ақша ҚАЙТАРЫЛМАЙДЫ. Бұл толығымен сіздің жауапкершілігіңіз.*\n\nТапсырыс: **{name}**\nКөлемі: **{vol} шт.**\nТөлем сомасы: **{total} ₸**\n\n🔗 **Егер бәрі түсінікті болса және келіссеңіз, дұрыс сілтемені жіберіңіз:**",
+        "pay_req": "💳 **ТӨЛЕМ ДЕТАЛЬДАРЫ**\n\nАударым сомасы: **{total} ₸**\n🏦 Kaspi Bank: `{kaspi}`\n\n🚨 **НАЗАР АУДАРЫҢЫЗ! ҚАТАҢ ЕРЕЖЕ:**\nТек жоғарыда көрсетілген **НАҚТЫ СОМАНЫ** аударыңыз. Егер сома аз немесе көп болса (тіпті 1 теңгеге), тапсырыс автоматты түрде қабылданбайды. **Бұл жағдайда ақша ҚАЙТАРЫЛМАЙДЫ!** Мұқият болыңыз.\n\n📸 **Төлем чегін (скриншот немесе PDF) осы чатқа жіберіңіз.**",
+        "wait_msg": "⏳ Чек жіберілді! Әкімші төлемді тексеруде.\n📞 Қолдау қызметі: @davronbk7",
+        "success_msg": "🎉 Төлем расталды! Тапсырыс сәтті басталды (ID: {order_id}).\n📞 Қолдау қызметі: @davronbk7",
+        "reject_msg": "❌ **Өкінішке орай, сіздің тапсырысыңыз қабылданбады.**\n\nСебебі: {reason}\n📞 Мәселені шешу үшін қолдау қызметіне жазыңыз: @davronbk7",
+        "need_photo": "⚠️ Өтініш, текст емес, чек ФОТОСЫН немесе PDF құжатын жіберіңіз.",
+        "reasons": {
+            "1": "Төлем шотқа түспеді.",
+            "2": "Аударым сомасы қате.",
+            "3": "Жүктелген файл банк чегі емес."
+        }
     },
     "uz": {
         "welcome": "👋 **Хуш келибсиз, {name}!**\n\nСиз ижтимоий тармоқларда ақлли ва хавфсиз ривожланиш хизматидасиз 🚀\n\n✨ **Биз нима қила оламиз?**\nБиз аккаунтларингиз ўсишига ёрдам берамиз. Бизнинг арсеналимизда фақат юқори тезлик ва ишончлиликни таъминлайдиган синовдан ўтган жаҳон серверлари мавжуд.\n\n🛡 **Хавфсизлик:** Бизга паролларингиз керак эмас — фақат профил ёки постга ҳавола кифоя.\n💎 **Сифат:** Тарифни ўзингиз танлайсиз — эконом стартдан тортиб, 365 кунгача кафолатланган премиум накруткагача.\n\n👇 Бошлаш учун қуйидаги ҳаракатни танланг:",
@@ -77,13 +95,22 @@ LANG_DICT = {
         "choose_pack": "⚙️ **Керакли пакетни (сифатни) танланг:**",
         "pack_info": "📦 Танланган пакет: **{name}**\n\nℹ️ **ТАВСИФИ ВА КАФОЛАТ:**\n_{desc}_\n\n⏱ **Бошланиши:** {start}\n🚀 **Тезлик:** {speed}\n🛡 **Муддати:** {retention}\n\n🔢 **Керакли миқдорни кўрсатинг:**",
         "btn_cancel": "⬅️ Бекор қилиш",
-        "link_req": "✅ Ажойиб!\n\n⚠ ДИҚҚАТ: АККАУНТИНГИЗ ОЧИҚ БЎЛИШИ КЕРАК\n\nБуюртмангиз: **{name}**\nМиқдори: **{vol} та**\nТўлов суммаси: **{total} ₸**\n\n🔗 **Ҳаволани юборинг** (профил ёки публикацияга):",
-        "pay_req": "💳 **ТЎЛОВ ТАФСИЛОТЛАРИ**\n\nЎтказма суммаси: **{total} ₸**\n🏦 Kaspi Bank: `{kaspi}`\n\n📸 **Илтимос, тўлов чекини (скриншот ёки PDF) ушбу чатга юборинг.**\n\n*(Чексиз буюртма қабул қилинмайди)*"
+        "link_req": "✅ Ажойиб! Буюртмангиз шакллантирилди.\n\n🚨 **ДИҚҚАТ! ҚАТЪИЙ ҚОИДАЛАР:**\n1. Профилингиз **ОЧИҚ** бўлиши керак.\n2. Ҳавола **100% тўғри** бўлиши шарт.\n📌 *Агар профил ёпиқ бўлса ёки ҳавола нотўғри бўлса — тизим пулни ечиб олади, хизмат бажарилмайди ва пул ҚАЙТАРИЛМАЙДИ. Бу тўлиқ сизнинг жавобгарлигингиз.*\n\nБуюртма: **{name}**\nМиқдори: **{vol} та**\nТўлов суммаси: **{total} ₸**\n\n🔗 **Агар ҳаммаси тушунарли бўлса, тўғри ҳаволани юборинг:**",
+        "pay_req": "💳 **ТЎЛОВ ТАФСИЛОТЛАРИ**\n\nЎтказма суммаси: **{total} ₸**\n🏦 Kaspi Bank: `{kaspi}`\n\n🚨 **ДИҚҚАТ! ҚАТЪИЙ ҚОИДА:**\nФақат юқорида кўрсатилган **АНИҚ СУММАНИ** ўтказинг. Агар сумма кам ёки кўп бўлса (ҳатто 1 тенгега), буюртма автоматик равишда рад этилади. **Бу ҳолатда пул ҚАЙТАРИЛМАЙДИ!** Эътиборли бўлинг.\n\n📸 **Илтимос, тўлов чекини (скриншот ёки PDF) ушбу чатга юборинг.**",
+        "wait_msg": "⏳ Чек юборилди! Администратор тўловни текширмоқда.\n📞 Қўллаб-қувватлаш: @davronbk7",
+        "success_msg": "🎉 Тўлов тасдиқланди! Буюртма ишга туширилди (ID: {order_id}).\n📞 Қўллаб-қувватлаш: @davronbk7",
+        "reject_msg": "❌ **Афсуски, буюртмангиз қабул қилинмади.**\n\nСабаби: {reason}\n📞 Муаммони ҳал қилиш учун қўллаб-қувватлаш хизматига ёзинг: @davronbk7",
+        "need_photo": "⚠️ Илтимос, матн эмас, чек ФОТОСУ ёки PDF ҳужжатини юборинг.",
+        "reasons": {
+            "1": "Тўлов ҳисобга келиб тушмади.",
+            "2": "Сумма нотўғри.",
+            "3": "Юкланган файл банк чеки эмас."
+        }
     }
 }
 
 # ==========================================
-# 2. ГЛОБАЛЬНАЯ БАЗА УСЛУГ (ПРОСТЫЕ И ПОНЯТНЫЕ НАЗВАНИЯ + ОПИСАНИЯ)
+# 2. ГЛОБАЛЬНАЯ БАЗА УСЛУГ (БЕЗ ИЗМЕНЕНИЙ)
 # ==========================================
 SERVICES = {
     "inst": {
@@ -305,6 +332,7 @@ SERVICES = {
 
 @dp.message(Command("start"))
 async def cmd_start(message: types.Message, state: FSMContext):
+    # При /start можно сбросить язык, чтобы человек выбрал его заново
     await state.clear()
     kb = InlineKeyboardBuilder()
     kb.row(types.InlineKeyboardButton(text="🇷🇺 Русский", callback_data="lang_ru"))
@@ -469,13 +497,24 @@ async def request_receipt(message: types.Message, state: FSMContext):
     await message.answer(text, parse_mode="Markdown")
     await state.set_state(OrderProcess.waiting_for_receipt)
 
+# ЗАЩИТА: Если скинули текст вместо чека
+@dp.message(OrderProcess.waiting_for_receipt, F.text)
+async def fallback_receipt_text(message: types.Message, state: FSMContext):
+    data = await state.get_data()
+    lang = data.get("lang", "ru")
+    t = LANG_DICT[lang]
+    await message.answer(t["need_photo"])
+
 @dp.message(OrderProcess.waiting_for_receipt, F.photo | F.document)
 async def process_receipt(message: types.Message, state: FSMContext):
     data = await state.get_data()
     user = message.from_user
+    lang = data.get("lang", "ru")
+    t = LANG_DICT[lang]
     
     file_id = message.document.file_id if message.document else message.photo[-1].file_id
-    callback_payload = f"{data['api_id']}_{data['vol']}_{user.id}"
+    # Передаем язык клиента в callback, чтобы админка знала, на каком языке отвечать
+    callback_payload = f"{data['api_id']}_{data['vol']}_{user.id}_{lang}"
     
     admin_text = (
         f"⚠️ АВТОРИЗАЦИЯ ЗАКАЗА (Платформа Peakerr)\n"
@@ -488,13 +527,18 @@ async def process_receipt(message: types.Message, state: FSMContext):
     
     kb = InlineKeyboardBuilder()
     kb.row(types.InlineKeyboardButton(text="✅ ЗАПУСТИТЬ", callback_data=f"ok_{callback_payload}"))
-    kb.row(types.InlineKeyboardButton(text="❌ Отклонить", callback_data=f"no_{user.id}"))
+    kb.row(types.InlineKeyboardButton(text="❌ Оплата не поступила", callback_data=f"no_{user.id}_1_{lang}"))
+    kb.row(types.InlineKeyboardButton(text="❌ Неверная сумма", callback_data=f"no_{user.id}_2_{lang}"))
+    kb.row(types.InlineKeyboardButton(text="❌ Это не чек", callback_data=f"no_{user.id}_3_{lang}"))
     
     if message.document: await bot.send_document(ADMIN_ID, file_id, caption=admin_text, reply_markup=kb.as_markup())
     else: await bot.send_photo(ADMIN_ID, file_id, caption=admin_text, reply_markup=kb.as_markup())
         
-    await message.answer("⏳ Чек отправлен админу. Ожидайте запуска!")
+    await message.answer(t["wait_msg"])
+    
+    # БЕЗОПАСНАЯ ОЧИСТКА ПАМЯТИ: сохраняем язык!
     await state.clear()
+    await state.update_data(lang=lang)
 
 # ==========================================
 # 5. АДМИН ПАНЕЛЬ (ПОДКЛЮЧЕНО К PEAKERR)
@@ -503,8 +547,13 @@ async def process_receipt(message: types.Message, state: FSMContext):
 @dp.callback_query(F.data.startswith("ok_"))
 async def admin_approve(callback: types.CallbackQuery):
     try:
-        _, payload = callback.data.split("_", 1)
-        api_id, vol, user_id = payload.split("_")
+        parts = callback.data.split("_")
+        api_id = parts[1]
+        vol = parts[2]
+        user_id = parts[3]
+        lang = parts[4] if len(parts) > 4 else "ru"
+        
+        t = LANG_DICT.get(lang, LANG_DICT["ru"])
         
         link = ""
         lines = callback.message.caption.split("\n")
@@ -517,7 +566,8 @@ async def admin_approve(callback: types.CallbackQuery):
         
         if "order" in response:
             await callback.message.edit_caption(caption=f"{callback.message.caption}\n\n🟢 [УСПЕХ. ЗАКАЗ ID: {response['order']}]")
-            await bot.send_message(int(user_id), f"🎉 Оплата подтверждена! Заказ запущен (ID: {response['order']}).")
+            success_message = t["success_msg"].format(order_id=response['order'])
+            await bot.send_message(int(user_id), success_message)
         else:
             await callback.message.answer(f"Ошибка Peakerr: {response.get('error', 'Unknown')}", show_alert=True)
     except Exception as e:
@@ -525,9 +575,25 @@ async def admin_approve(callback: types.CallbackQuery):
 
 @dp.callback_query(F.data.startswith("no_"))
 async def admin_reject(callback: types.CallbackQuery):
-    user_id = callback.data.split("_")[1]
-    await callback.message.edit_caption(caption=f"{callback.message.caption}\n\n🔴 [ОТКЛОНЕН]")
-    await bot.send_message(int(user_id), "❌ Чек отклонен. Обратитесь в поддержку.")
+    parts = callback.data.split("_")
+    user_id = parts[1]
+    reason_code = parts[2]
+    lang = parts[3] if len(parts) > 3 else "ru"
+    
+    t = LANG_DICT.get(lang, LANG_DICT["ru"])
+    reject_reason_localized = t["reasons"].get(reason_code, "Отказ в авторизации.")
+    
+    admin_reasons = {
+        "1": "Оплата не поступила",
+        "2": "Неверная сумма",
+        "3": "Это не чек"
+    }
+    admin_reason = admin_reasons.get(reason_code, "Отказ")
+    
+    await callback.message.edit_caption(caption=f"{callback.message.caption}\n\n🔴 [ОТКЛОНЕН: {admin_reason}]")
+    
+    reject_message = t["reject_msg"].format(reason=reject_reason_localized)
+    await bot.send_message(int(user_id), reject_message)
 
 async def main():
     logging.info("Система работает на Peakerr API.")
